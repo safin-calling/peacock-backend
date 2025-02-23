@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import User from "../schema";
+import { User } from "../schema";
 import { compare, hash } from "bcrypt";
 import { sign } from "jsonwebtoken";
 

@@ -14,8 +14,8 @@ const userSchema = new mongoose.Schema({
 type User = mongoose.InferSchemaType<typeof userSchema>;
 
 const categorySchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
-  description: { type: String, required: true },
+  name: { type: String, required: true },
+  slug: { type: String, required: true, unique: true },
 });
 
 const User = mongoose.model("User", userSchema);

@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { get_categories, subscribe_category, unsubscribe_category } from "../controllers/categories";
+import {
+  get_categories,
+  subscribe_category,
+  unsubscribe_category,
+} from "../controllers/categories";
 import { authorize } from "../middlewares/auth";
 
 const router = Router();

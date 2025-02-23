@@ -10,15 +10,38 @@ const startDB = async () => {
 
 const initDB = async () => {
   const categories = [
-    { name: "Technology", description: "Technology description" },
-    { name: "Science", description: "Science description" },
-    { name: "Business", description: "Business description" },
-    { name: "Health", description: "Health description" },
-    { name: "Entertainment", description: "Entertainment description" },
-    { name: "Sports", description: "Sports description" },
+    {
+      slug: "history",
+      name: "History",
+    },
+    {
+      slug: "american",
+      name: "American",
+    },
+    {
+      slug: "crime",
+      name: "Crime",
+    },
+    {
+      slug: "french",
+      name: "French",
+    },
+    {
+      slug: "fiction",
+      name: "Fiction",
+    },
+    {
+      slug: "english",
+      name: "English",
+    },
   ];
-  await Category.create(categories);
-  console.log("Categories initialized!");
+
+  const dbcategories = await Category.exists({});
+
+  if (!dbcategories) {
+    await Category.create(categories);
+    console.log("Categories initialized!");
+  }
 };
 
 export default startDB;

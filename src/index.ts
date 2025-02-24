@@ -16,11 +16,7 @@ registerRoutes(app);
 scheduleWeeklyEmails();
 
 app.get("/", (req, res) => {
-    res.send(
-      `Hello, this is the root route for the Peacock API \n 
-      visit Postman to test the endpoints \n 
-      https://www.postman.com/lunar-module-candidate-22737456/my-workspace/collection/rb32uma/peacock?action=share&creator=42555517`
-    );
+    res.send(`Hello, this is the root route for the Peacock API`);
 });
 
 app.listen(port, () => {

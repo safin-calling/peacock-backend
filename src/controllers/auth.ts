@@ -17,7 +17,7 @@ const register = async (req: Request, res: Response): Promise<void> => {
     return;
   }
 
-  const hashedPassword = await hash(password, 10);
+  const hashedPassword = await hash(password, process.env.BCRYPT_SALT_ROUNDS || 10);
 
   await User.create({ name, email, password: hashedPassword });
   res.status(200).json({ message: "User registered successfully" });
@@ -40,7 +40,8 @@ const login = async (req: Request, res: Response): Promise<void> => {
 
   const accessToken = sign(
     { userId: user._id },
-    process.env.JWT_SECRET || "fallback-secret"
+    process.env.JWT_SECRET || "fallback-secret",
+    { expiresIn: "1h" }
   );
 
   res.status(200).json({ message: "User logged in successfully", accessToken });

@@ -17,7 +17,7 @@ const register = async (req: Request, res: Response): Promise<void> => {
     return;
   }
 
-  const hashedPassword = await hash(password, process.env.BCRYPT_SALT_ROUNDS || 10);
+  const hashedPassword = await hash(password, Number(process.env.BCRYPT_SALT_ROUNDS) || 10);
 
   await User.create({ name, email, password: hashedPassword });
   res.status(200).json({ message: "User registered successfully" });
